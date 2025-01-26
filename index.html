@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عرض نموذج 3D</title>
+    <style>
+        body { margin: 0; font-family: Arial, sans-serif; background-color: #262626; }
+        canvas { display: block; }
+        #controls {
+            position: absolute;
+            top: 100px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.1); /* خلفية شفافة */
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        #controls button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1); /* خلفية شفافة */
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        #controls button:hover {
+            background: rgba(255, 255, 255, 0.2); /* خلفية شفافة عند التحويم */
+        }
+        #table-container {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.1); /* خلفية شفافة */
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            color: white;
+        }
+        #table-container table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        #table-container th, #table-container td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        #logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 150px; /* تصغير عرض الشعار ليتناسب مع الهاتف */
+            height: auto; /* ارتفاع تلقائي */
+        }
+    </style>
+</head>
+<body>
+    <!-- شعار الموقع -->
+    <img id="logo" src="./assets/logo.png" alt="Logo">
+
+    <!-- جدول المعلومات -->
+    <div id="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Depth Total</th>
+                    <th>Bunch Kind</th>
+                    <th>Size</th>
+                    <th>Customer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>asl 02</td>
+                    <td>2 mm</td>
+                    <td>UP</td>
+                    <td>30x60</td>
+                    <td>asel ceram </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- مكتبة Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- مكتبة OrbitControls -->
+    <script src="https://cdn.jsdelivr.net/npm/three/examples/js/controls/OrbitControls.js"></script>
+    <!-- ملف JavaScript الخاص بنا -->
+    <script src="main.js"></script>
+
+    <!-- أدوات التحكم -->
+    <div id="controls">
+        <button onclick="setView('front')">واجهة أمامية</button>
+        <button onclick="setView('back')">واجهة خلفية</button>
+        <button onclick="setView('left')">جانب أيسر</button>
+        <button onclick="setView('right')">جانب أيمن</button>
+        <button onclick="setView('top')">من الأعلى</button>
+        <button onclick="setView('bottom')">من الأسفل</button>
+        <button onclick="toggleRotation()">تشغيل/إيقاف التدوير</button>
+    </div>
+</body>
+</html>

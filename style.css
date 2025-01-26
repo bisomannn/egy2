@@ -1,0 +1,10 @@
+/* إعدادات الصفحة */
+body {
+    margin: 0;
+    overflow: hidden;
+}
+
+/* جعل الـ canvas يعرض كامل المساحة */
+canvas {
+    display: block;
+}
